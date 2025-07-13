@@ -1,7 +1,64 @@
-<a href="./ctf.html">
-    <button>CTF Contest</button>
- </a>
- <a href="./info.html">
-    <button>PreOJI Contest</button>
- </a>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tudor Morariu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="status-bar" id="status-bar">
+    <span>1</span>
+    <span id="focused">About</span>  
+    <span class="time" id="time"></span>
+  </div>
+
+  <main class="grid">
+    <section class="tile focused" id="about" role="main" aria-label="About Tudor">
+      <h1>About Me</h1>
+      <p>Hello! I'm <strong>Tudor</strong>, and I like programming and food.</p>
+      
+      <h2>Cool Projects</h2>
+      <ul>
+        <div class="info-box">
+            <h3>2D SDL Raycaster</h3>
+            <p>A simple raycaster that projects every ray, achieving shadows.</p>
+            <a href="https://github.com/MorariuT/2D-Raytracing-in-C">Github</a>
+            <br><a href="./2D_SDL_raycaster.html">Explanation</a>
+        </div>
+        <div class="info-box">
+            <h3>2D SDL Gravity Simulator</h3>
+            <p>A simple gravity simulator, with planets, inspired by a youtube video.</p>
+            <a href="https://github.com/MorariuT/2D-C-Gravity-Simulator">Github</a>
+            <br><a href="./2D_SDL_gravity.html">Explanation</a>
+        </div>
+        <div class="info-box">
+            <h3>AI Work</h3>
+            <p>A big collection of jupyter notebooks that I made while preparing for diffrent olimpyads.</p>
+            <a href="https://github.com/MorariuT/ai_work">Github</a>
+        </div>
+        <div class="info-box">
+            <h3>Evolution Simulator</h3>
+            <p>A simple genetic algorithm based on a Neural Network that I made for a presentation in my Biology class.</p>
+            <a href="https://github.com/MorariuT/Evolution-Simulator">Github</a>
+        </div>
+        <div class="info-box">
+            <h3>From Scratch OS</h3>
+            <p>A minimal "OS" that is written enitierly in ASM. It is not really an OS but more like a terminal.</p>
+            <a href="https://github.com/MorariuT/From-Scratch-OS">Github</a>
+        </div>
+      </ul>
+
+      <h2>Contact Info</h2>
+      <ul>
+        <li><strong><a href="https://www.linkedin.com/in/tudor-morariu-01a77b14b/">Linkedin</a></strong></li>
+        <li><strong><a href="https://github.com/MorariuT">Github</a></strong></li>
+      </ul>
+      
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

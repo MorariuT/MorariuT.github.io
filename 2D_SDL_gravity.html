@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tudor Morariu</title>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Prism Theme (Choose any like prism-tomorrow, prism-okaidia, etc.) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" />
+
+  <!-- Prism Core -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+
+  <!-- Load C++ language support -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="status-bar" id="status-bar">
+    <span>2</span>
+    <span id="focused">2D Gravity Simulator</span>  
+    <span class="time" id="time"></span>
+  </div>
+
+  <main class="grid">
+    <section class="tile focused" id="about" role="main" aria-label="About Tudor">
+      <h1>General Info</h1>
+      <p>A youtube video inspired me to do this project. I simplified it (the video was making 3D graphics) but i think it looks pretty good.</p>
+      <h1>Some Video</h1>
+      <!-- <p>The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p> -->
+
+      <div class="photo-row">
+         <video width="900" height="600" controls>
+            <source src="media/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+        <h1>Explanation</h1>
+            In this section I will (try to) explain the code.
+
+            This function is doing all the hard work. It takes as arguments the main object (aka. the class parent) and another object and then it calculates the attraction using <a>Newton's law of universal gravitation</a>.
+            <pre>
+                <code class="language-cpp">
+
+        std::pair<float, float> Object::calculate_gravity(const Object &other)
+        {
+            const float G = 5;
+            float dx = other.x - this->x;
+            float dy = other.y - this->y;
+            float distance = get_distance(this->x, this->y, other.x, other.y);
+
+            if (distance == 0) return {0, 0};
+
+            float force = G * (this->mass * other.mass) / (distance * distance);
+            float ax = force * (dx / distance) / this->mass; 
+            float ay = force * (dy / distance) / this->mass;
+
+            return {ax, ay};
+        }
+                </code>
+            </pre>
+        
+        Rest of code is kinda the same as the 2D Raycaster so yeah (definetly didnt get lazy).
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

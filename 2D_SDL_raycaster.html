@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tudor Morariu</title>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pretty Code Example</title>
+
+  <!-- Prism Theme (Choose any like prism-tomorrow, prism-okaidia, etc.) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" />
+
+  <!-- Prism Core -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+
+  <!-- Load C++ language support -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="status-bar" id="status-bar">
+    <span>2</span>
+    <span id="focused">2D Raycaster</span>  
+    <span class="time" id="time"></span>
+  </div>
+
+  <main class="grid">
+    <section class="tile focused" id="about" role="main" aria-label="About Tudor">
+      <h1>General Info</h1>
+      <p>The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p>
+      <h1>Some Photos</h1>
+      <!-- <p>The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p> -->
+
+      <div class="photo-row">
+        <img src="./media/ss1.png" alt="Photo 1">
+        <img src="./media/ss2.png" alt="Photo 2">
+        <img src="./media/ss3.png" alt="Photo 3">
+        </div>
+    
+        <h1>Explanation</h1>
+            In this section I will (try to) explain the code.
+
+            The first function is <a>render_circle</a>. To get the points we need to render, we will iterate over the square defined by the radius and check if the euclidean distance from the circle center and point is smaller or equal than the radius.
+            <pre>
+                <code class="language-cpp">
+
+        double Object::get_distance(int x1, int y1, int x2, int y2)
+        {
+            return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+        }
+
+        void Object::render_circle(int x, int y, int radius)
+        {
+            using namespace std;
+            SDL_SetRenderDrawColor(s, this->R, this->G, this->B, this->A);
+
+            int x_min = max(0, x - radius);
+            int y_min = max(0, y - radius);
+
+            int x_max = min(WIDTH, x + radius);
+            int y_max = min(HEIGHT, y + radius);
+
+            for(int i = x_min;i <= x_max;i++)
+            {
+                for(int j = y_min;j <= y_max;j++)
+                {
+                    if(Object::get_distance(i, j, x, y) <= radius)
+                    {
+                        SDL_RenderDrawPoint(s, i, j);
+                        this->points.push_back(make_pair(i, j));
+                    }
+                }
+            }
+
+            SDL_SetRenderDrawColor(s, 0x00, 0x00, 0x00, 0xFF);
+        }            
+                </code>
+            </pre>
+
+            In the next section render a chunck of 2 rays, by splitting then into up-right, up-left, down-right, down-left and redering them on the same thread.
+
+            <pre>
+                <code class="language-cpp">
+                    
+            void render_chunk(vector<double> &diff_x1, vector<double> &diff_y1, double x2, double y2, int start, int end, vector<SDL_Point> &local_points) 
+            {
+                for (int i = start; i < end; i++) 
+                {
+                    double step_x = diff_x1[i] / 2;
+                    double step_y = diff_y1[i] / 2;
+                    double x = x2, y = y2;
+
+                    if (step_x <= 0 && step_y <= 0) 
+                    {
+                        while (x > 0 && y > 0) 
+                        {
+                            x += step_x;
+                            y += step_y;
+                            if (is_in_objects(x, y))
+                            break;
+                            local_points.push_back({static_cast<int>(x), static_cast<int>(y)});
+                        }
+                    }
+
+                    x = x2;
+                    y = y2;
+                    if (step_x >= 0 && step_y <= 0) 
+                    {
+                        while (x < WIDTH && y > 0) 
+                        {
+                            x += step_x;
+                            y += step_y;
+                            if (is_in_objects(x, y))
+                            break;
+                            local_points.push_back({static_cast<int>(x), static_cast<int>(y)});
+                        }
+                    }
+
+                    x = x2;
+                    y = y2;
+                    if (step_x <= 0 && step_y >= 0) 
+                    {
+                        while (x > 0 && y < HEIGHT) 
+                        {
+                            x += step_x;
+                            y += step_y;
+                            if (is_in_objects(x, y))
+                            break;
+                            local_points.push_back({static_cast<int>(x), static_cast<int>(y)});
+                        }
+                    }
+
+                    x = x2;
+                    y = y2;
+                    if (step_x >= 0 && step_y >= 0) 
+                    {
+                        while (x < WIDTH && y < HEIGHT) 
+                        {
+                            x += step_x;
+                            y += step_y;
+                            if (is_in_objects(x, y))
+                            break;
+                            local_points.push_back({static_cast<int>(x), static_cast<int>(y)});
+                        }
+                    }
+                }
+            }
+
+                </code>
+
+
+            </pre>
+
+            Here we split the render duty to threds. So each thred renders a batch of rays so that <a>num_threads * num_rays_per_thread = num_total_rays</a>
+            <pre>
+                <code class="language-cpp">
+                
+            void render_functions(SDL_Renderer *s, vector<double> &diff_x1, vector<double> &diff_y1, double x2, double y2) 
+            {
+                SDL_SetRenderDrawColor(s, 0, 0xFF, 0xFF, 0xFF);
+
+                int num_threads = 8;
+                vector<thread> threads;
+                int totalRays = diff_x1.size();
+                int chunk_size = totalRays / num_threads;
+
+                vector<vector<SDL_Point>> thread_points(num_threads);
+
+                for (int i = 0; i < num_threads; i++) 
+                {
+                    int start = i * chunk_size;
+                    int end = (i + 1) * chunk_size;
+
+                    threads.emplace_back([=, &diff_x1, &diff_y1, &thread_points]() 
+                    {
+                    render_chunk(diff_x1, diff_y1, x2, y2, start, end, thread_points[i]);
+                    });
+                }
+
+                for (auto &t : threads)
+                    t.join();
+
+                vector<SDL_Point> all_points;
+                for (auto &vec : thread_points) 
+                {
+                    all_points.insert(all_points.end(), vec.begin(), vec.end());
+                }
+
+                SDL_RenderDrawPoints(s, all_points.data(), all_points.size());
+                SDL_SetRenderDrawColor(s, 0x00, 0x00, 0x00, 0xFF);
+            }
+
+                </code>
+            </pre>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
