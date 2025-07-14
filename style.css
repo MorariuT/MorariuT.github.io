@@ -64,7 +64,7 @@ body {
   border: 2px solid #444;
   padding: 1rem;
   overflow: auto;
-  background-color: #1e1e1e; /* Give it a 'window' feel */
+  /* background-color: #1e1e1e; Give it a 'window' feel */
   box-sizing: border-box;
   border-radius: 0px; /* Optional: i3-gaps + rounded windows */
 }
@@ -75,7 +75,7 @@ body {
 }
 
 .focused {
-  border: 1px solid #1e1e1e;
+  border: 0px solid #1e1e1e;
 }
 
 a {
@@ -102,6 +102,15 @@ a {
     width: 10px;
     background: #00ff00;
     animation: blink 1s step-start infinite;
+}
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  opacity: 0.5;
+  z-index: -100000;
 }
 
 .info-box {
