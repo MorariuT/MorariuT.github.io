@@ -5,7 +5,7 @@ body {
   font-family: "Courier New", monospace;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 50vh;
   padding-top: 40px;
 }
 
@@ -161,4 +161,9 @@ a {
   background-color: #161616; /* Green */
   color: #00ff9c;
   transition: 0.1s;
+}
+
+
+canvas {
+  border: 2px solid white;
 }
