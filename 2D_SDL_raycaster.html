@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tudor Morariu</title>
+  <title>2D Raycaster</title>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pretty Code Example</title>
 
   <!-- Prism Theme (Choose any like prism-tomorrow, prism-okaidia, etc.) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" />
@@ -22,30 +21,29 @@
 <body>
   <div class="status-bar" id="status-bar">
     <span>2</span>
-    <span id="focused">2D Raycaster</span>  
+    <span id="focused" style="font-size: 17px;">2D Raycaster</span>  
     <span class="time" id="time"></span>
   </div>
 
   <main class="grid">
     <section class="tile focused" id="about" role="main" aria-label="About Tudor">
-      <h1>General Info</h1>
-      <p>The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p>
-      <h1>Some Photos</h1>
+      <h1 style="font-size: 25px;">General Info</h1>
+      <p style="font-size: 17px;">The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p>
+      <h1 style="font-size: 25px;">Some Photos</h1>
       <!-- <p>The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p> -->
 
       <div class="photo-row">
-        <img src="./media/ss1.png" alt="Photo 1">
-        <img src="./media/ss2.png" alt="Photo 2">
-        <img src="./media/ss3.png" alt="Photo 3">
+        <img src="./media/ss1.png" alt="Photo 1" class="info-box">
+        <img src="./media/ss2.png" alt="Photo 2" class="info-box">
+        <img src="./media/ss3.png" alt="Photo 3" class="info-box">
         </div>
     
-        <h1>Explanation</h1>
-            In this section I will (try to) explain the code.
+        <h1 style="font-size: 25px;">Explanation</h1>
+            <p style="font-size: 17px;">In this section I will (try to) explain the code.</p>
 
-            The first function is <a>render_circle</a>. To get the points we need to render, we will iterate over the square defined by the radius and check if the euclidean distance from the circle center and point is smaller or equal than the radius.
+            <p style="font-size: 17px;">The first function is <a>render_circle</a>. To get the points we need to render, we will iterate over the square defined by the radius and check if the euclidean distance from the circle center and point is smaller or equal than the radius.</p>
             <pre>
                 <code class="language-cpp">
-
         double Object::get_distance(int x1, int y1, int x2, int y2)
         {
             return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
@@ -75,15 +73,13 @@
             }
 
             SDL_SetRenderDrawColor(s, 0x00, 0x00, 0x00, 0xFF);
-        }            
-                </code>
+        }            </code>
             </pre>
 
-            In the next section render a chunck of 2 rays, by splitting then into up-right, up-left, down-right, down-left and redering them on the same thread.
+            <p style="font-size: 17px;">In the next section render a chunck of 2 rays, by splitting then into up-right, up-left, down-right, down-left and redering them on the same thread.</p>
 
             <pre>
-                <code class="language-cpp">
-                    
+                <code class="language-cpp">        
             void render_chunk(vector<double> &diff_x1, vector<double> &diff_y1, double x2, double y2, int start, int end, vector<SDL_Point> &local_points) 
             {
                 for (int i = start; i < end; i++) 
@@ -146,17 +142,14 @@
                         }
                     }
                 }
-            }
-
-                </code>
+            }</code>
 
 
             </pre>
 
-            Here we split the render duty to threds. So each thred renders a batch of rays so that <a>num_threads * num_rays_per_thread = num_total_rays</a>
+            <p style="font-size: 17px;">Here we split the render duty to threds. So each thred renders a batch of rays so that <a>num_threads * num_rays_per_thread = num_total_rays</a></p>
             <pre>
                 <code class="language-cpp">
-                
             void render_functions(SDL_Renderer *s, vector<double> &diff_x1, vector<double> &diff_y1, double x2, double y2) 
             {
                 SDL_SetRenderDrawColor(s, 0, 0xFF, 0xFF, 0xFF);
@@ -190,9 +183,7 @@
 
                 SDL_RenderDrawPoints(s, all_points.data(), all_points.size());
                 SDL_SetRenderDrawColor(s, 0x00, 0x00, 0x00, 0xFF);
-            }
-
-                </code>
+            }</code>
             </pre>
 
     </section>

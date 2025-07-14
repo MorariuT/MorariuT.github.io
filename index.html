@@ -9,95 +9,91 @@
 <body>
   <div class="status-bar" id="status-bar">
     <span>1</span>
-    <span id="focused">About</span>  
+    <span id="focused" style="font-size: 17px;">About</span>  
     <span class="time" id="time"></span>
   </div>
 
   <main class="grid">
     <section class="tile focused" id="about" role="main" aria-label="About Tudor">
-      <h1>About Me</h1>
-      <p>Hello! I'm <strong>Tudor</strong>, and I like programming and food.</p>
-
-      <h2>Awards</h2>
-
-      <ul>
-        <div class="info-box">
-            <h3>2020 6th grade</h3>
-            <p>Brone Medal at ONI (National Olimpiad in Informatics)</p><br>
-            <p></p>
-        </div>
-        <div class="info-box">
-            <h3>2021 7th grade</h3>
-            <p>Brone Medal at ONI</p><br>
-            <p></p>
-        </div>
-        <div class="info-box">
-            <h3>2022 8th grade</h3>
-            <p>National Contest "Grigore Moisil" in Informatics 2nd place</p>
-            <p></p>
-        </div>
-        <div class="info-box">
-            <h3>2023 9th grade</h3>
-            <p>Brone Medal at ONI</p><br>
-            <p>National Contest "Grigore Moisil" in Informatics 4th place</p><br>
-            <p>National Olimpyad in Cybersecurity 4th place</p><br>
-            <p>Qualified in the National Team for IAIO 2024</p><br>
-            <p>Honorary Mention at IAIO 2024</p>
-            <p></p>
-        </div>
-        <div class="info-box">
-            <h3>2024 10th grade</h3>
-            <p>Brone Medal at ONI</p><br>
-            <p>National Contest "Grigore Moisil" in Informatics 5th place</p><br>
-            <p>National Cybersecurity Contest Unbreakable Teams 12th place</p><br>
-            <p>Qualified in the National Team for IOAI 2025</p><br>
-            <p></p>
-        </div>
-      </ul>
+      <h1 style="font-size: 30px;">About Me</h1>
+      <p style="font-size: 20px;">Hello! I'm <strong>Tudor</strong>, and I like programming and food.</p>
 
 
 
-      <h2>Cool Projects</h2>
-      <ul>
-        <div class="info-box">
+      <h1 style="font-size: 25px;">Cool Projects</h1>
+
+      <div style="width: 100%; overflow: hidden;">
+         <div class="info-box">
             <h3>2D SDL Raycaster</h3>
-            <p>A simple raycaster that projects every ray, achieving shadows.</p>
+            <p>A raycaster that projects every ray, onto objects.</p>
+            <div class="photo-row">
+               <img src="./media/ss1.png" alt="Photo 1" class="info-box">
+            </div>
             <a href="https://github.com/MorariuT/2D-Raytracing-in-C">Github</a>
             <br><a href="./2D_SDL_raycaster.html">Explanation</a>
-        </div>
-        <div class="info-box">
+         </div>
+
+
+         <div class="info-box">
             <h3>2D SDL Gravity Simulator</h3>
             <p>A simple gravity simulator, with planets, inspired by a youtube video.</p>
+            <video  controls style="width: 100%; height: auto;">
+               <source src="media/video.mp4" type="video/mp4">
+               Your browser does not support the video tag.
+            </video>
             <a href="https://github.com/MorariuT/2D-C-Gravity-Simulator">Github</a>
             <br><a href="./2D_SDL_gravity.html">Explanation</a>
-        </div>
-        <div class="info-box">
+         </div>
+
+         <div class="info-box">
             <h3>AI Work</h3>
-            <p>A big collection of jupyter notebooks that I made while preparing for diffrent olimpyads.</p>
+            <p>A big collection of jupyter notebooks that I made while preparing for diffrent olimpyads.</p><br>
+            <p>It includes preparation for the National/International AI Olimpyads, stuff made "from scratch" as learning purpose and some theory.</p><br>
+            <p>Every couple of months I update it with new stuff I make.</p>
             <a href="https://github.com/MorariuT/ai_work">Github</a>
         </div>
         <div class="info-box">
             <h3>Evolution Simulator</h3>
             <p>A simple genetic algorithm based on a Neural Network that I made for a presentation in my Biology class.</p>
+            <video controls style="width: 100%; height: auto;">
+               <source src="media/video_evo.mp4" type="video/mp4">
+               Your browser does not support the video tag.
+            </video>
             <a href="https://github.com/MorariuT/Evolution-Simulator">Github</a>
+            <br><a href="./Evolving_Simulator.html">Explanation</a>
         </div>
-        <div class="info-box">
+        <!-- <div class="info-box" >
             <h3>From Scratch OS</h3>
             <p>A minimal "OS" that is written enitierly in ASM. It is not really an OS but more like a terminal.</p>
             <a href="https://github.com/MorariuT/From-Scratch-OS">Github</a>
-        </div>
-      </ul>
+        </div> -->
 
-      <h2>Contact Info</h2>
-      <ul>
-        <li><strong><a href="https://www.linkedin.com/in/tudor-morariu-01a77b14b/">Linkedin</a></strong></li>
-        <li><strong><a href="https://github.com/MorariuT">Github</a></strong></li>
-      </ul>
+      </div><br>
+
       
+      <h1 style="font-size: 25px;">Other Interesting Stuff</h1>
+      <div>
+         <button onclick="redirect_awards()" class="button"><strong>Awards</strong></button>
+         <button onclick="redirect_linkedin()" class="button" ><strong>Linkedin</strong></button>
+         <button onclick="redirect_github()" class="button" ><strong>Github</strong></button>
+      </div>
+
+      <script>
+        function redirect_awards() {
+            window.location.href = './awards.html';
+        }
+
+        function redirect_github() {
+            window.location.href = 'https://github.com/MorariuT';
+        }
+
+        function redirect_linkedin() {
+            window.location.href = 'https://www.linkedin.com/in/tudor-morariu-01a77b14b';
+        }
+      </script>      
 
     </section>
   </main>
 
-  <script src="script.js"></script>
 </body>
 </html>

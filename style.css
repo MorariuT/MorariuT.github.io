@@ -26,7 +26,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  font-family: monospace;
+  font-family: "Courier New", monospace;
   z-index: 999;
 }
 .photo-row {
@@ -47,6 +47,7 @@ body {
     }
 
 
+
 .grid {
   display: grid;
   /* grid-template-columns: 1fr 1fr; */
@@ -56,6 +57,8 @@ body {
   flex: 1;
   box-sizing: border-box;
 }
+
+
 
 .tile {
   border: 2px solid #444;
@@ -93,10 +96,6 @@ a {
     padding-left: 2em;
 }
 
-.selected::before {
-    content: "➤ ";
-    margin-left: -2em;
-}
 
 #cursor {
     display: inline-block;
@@ -105,20 +104,23 @@ a {
     animation: blink 1s step-start infinite;
 }
 
-@keyframes blink {
-    50% { background: transparent; }
-}
-
 .info-box {
   background-color: #262626;
   color: #f0f0f0;
   padding: 0.4rem 0.5rem;
-  /* border-radius: 0.75rem; */
+  border-radius: 0.75rem;
   /* border-left: 4px solid #00bcd4; */
-  margin: 1rem 0;
-  font-family: monospace;
-  /* box-shadow: 0 0 10px rgba(0,0,0,0.2); */
+  width: 300px;
+  height: 430px;
+  overflow: auto;
+  float: left;
+  /* gap: ; */
+  /* margin-left: 100px; */
+  margin: 1rem;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+
 
 .info-box h3 {
   margin: 0 0 0.5rem;
@@ -126,7 +128,29 @@ a {
   color: #00ff9c;
 }
 
-.info-box p {
-  margin: 0;
-  font-size: 0.95rem;
+ .button {
+  background-color: #262626; /* Green */
+  border: none;
+  color: #00ff9c;
+  /* padding: 15px 32px; */
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  font-size: 16px;
+  padding: 0.4rem 0.5rem;
+  border-radius: 0.75rem;
+  margin: 1rem;
+  float: left;
+  width: 316px;
+  height: 50px;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: 0.1s;
+} 
+
+
+.button:hover {
+  background-color: #161616; /* Green */
+  color: #00ff9c;
+  transition: 0.1s;
 }
