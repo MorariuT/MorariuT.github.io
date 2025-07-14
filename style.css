@@ -64,7 +64,7 @@ body {
   border: 2px solid #444;
   padding: 1rem;
   overflow: auto;
-  /* background-color: #1e1e1e; Give it a 'window' feel */
+  background-color: #1e1e1e; /* Give it a 'window' feel */
   box-sizing: border-box;
   border-radius: 0px; /* Optional: i3-gaps + rounded windows */
 }
@@ -75,7 +75,7 @@ body {
 }
 
 .focused {
-  border: 0px solid #1e1e1e;
+  border: 1px solid #1e1e1e;
 }
 
 a {
@@ -109,7 +109,6 @@ a {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  opacity: 0.5;
   z-index: -100000;
 }
 
@@ -150,7 +149,7 @@ a {
   border-radius: 0.75rem;
   margin: 1rem;
   float: left;
-  width: 316px;
+  width: 332px;
   height: 50px;
   font-family: "Courier New", monospace;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
