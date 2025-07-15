@@ -175,55 +175,15 @@ canvas {
   border: 2px solid white;
 }
 
-/*##########################*/
-
-
-
-/*
-  .status-bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    text-align: center;
-  }
-
-
-  .photo-row {
-    text-align: center;
-  }
-
-  .photo-row img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-  }
-
-  .button {
-    margin: 0.5rem;
-    padding: 0.5rem 1rem;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-
-  .button:hover {
-    background-color: #005fa3;
-  }
-
-  video {
-    border-radius: 10px;
-  } */
-
-
-    .repo {
-      background: #262626;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .repo a {
-      text-decoration: none;
-      color: #00ff9c;
-      font-weight: bold;
-    }
+.repo {
+    background: #262626;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.repo a {
+    text-decoration: none;
+    color: #00ff9c;
+    font-weight: bold;
+}
