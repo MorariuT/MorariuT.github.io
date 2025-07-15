@@ -3,7 +3,7 @@ body {
   background-color: #1e1e1e;
   color: #cccccc;
   font-family: "Courier New", monospace;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   height: 50vh;
   padding-top: 40px;
@@ -54,7 +54,7 @@ body {
   /* grid-template-rows: 1fr 1fr; */
   gap: 12px; /* <-- This adds the gaps between tiles */
   padding: 12px; /* <-- Optional: outer margin around grid */
-  flex: 1;
+  /* flex: 1; */
   box-sizing: border-box;
 }
 
@@ -72,6 +72,7 @@ body {
 .tile h1 {
   margin-top: 0;
   color: #00ff9c;
+
 }
 
 .focused {
@@ -79,8 +80,14 @@ body {
 }
 
 a {
-  color: #90ee90;
+  color: #00ff9c;
+    /* color: #90ee90; */
+
   text-decoration: none;
+}
+
+p {
+
 }
 
 .focused_menu {
@@ -141,7 +148,7 @@ a {
   border: none;
   color: #00ff9c;
   /* padding: 15px 32px; */
-  text-align: center;
+  /* text-align: center; */
   text-decoration: none;
   /* display: inline-block; */
   font-size: 16px;
@@ -167,3 +174,56 @@ a {
 canvas {
   border: 2px solid white;
 }
+
+/*##########################*/
+
+
+
+/*
+  .status-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+
+  .photo-row {
+    text-align: center;
+  }
+
+  .photo-row img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #005fa3;
+  }
+
+  video {
+    border-radius: 10px;
+  } */
+
+
+    .repo {
+      background: #262626;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .repo a {
+      text-decoration: none;
+      color: #00ff9c;
+      font-weight: bold;
+    }

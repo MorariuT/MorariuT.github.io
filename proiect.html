@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proiect ML</title>
+    <title>Gambling Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Courier New", monospace;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #161616;
         }
 
         canvas {
             display: block;
             margin: 20px auto;
-            border: 1px solid #ccc;
-            background: #ffffff;
+            /* border: 1px solid #00ff9c; */
+            background: #262626;
             max-width: 100%;
+            border-radius: 1rem;
         }
 
         button {
@@ -28,18 +29,27 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            background-color: #007bff;
+            background-color: #262626;
             color: white;
+              transition: 0.1s;
+
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #161616;
+            transition: 0.1s;
+
         }
 
         p {
             font-size: 14px;
-            color: #555;
+            color: #00ff9c;
             margin: 10px 20px;
+        }
+
+        h1 {
+            font-size: 30px;
+            color: #00ff9c;
         }
 
         .slidecontainer 
@@ -49,10 +59,10 @@
 
         .slider 
         {
-            -webkit-appearance: none;
+            /* -webkit-appearance: none ; */
             width: 25%;
             height: 25px;
-            background: #d3d3d3;
+            background: #262626;
             outline: none;
             opacity: 0.7;
             -webkit-transition: .2s;
@@ -70,7 +80,7 @@
             appearance: none;
             width: 25px;
             height: 25px;
-            background: #000000;
+            background: #00ff9c;
             cursor: pointer;
         }
 
@@ -78,28 +88,35 @@
         {
             width: 25px;
             height: 25px;
-            background: #000000;
+            background: #00ff9c;
             cursor: pointer;
         }
+
+        /* .tile {
+            border: 2px solid #444;
+            padding: 1rem;
+            overflow: auto;
+            background-color: #1e1e1e;
+            box-sizing: border-box;
+            border-radius: 100px; 
+
+        } */
     </style>
 </head>
 <body>
-    <h1>Proiect ML</h1>
+    <h1>Gambling Game</h1>
+
     <canvas id="galtonCanvas" width="600" height="600"></canvas>
     <button id="startSimulation">Start</button>
     <div class="slidecontainer">
-        <input type="range" min="1" max="20" value="5" class="slider" id="noRows">
-        <p>Numar de randuri: <span id="sliderRows"></span></p>
-    </div>
+        <input type="range" min="1" max="20" value="5" class="slider" id="noRows" style="color: #00ff9c;">
+        <p><strong>Number of rows: <span id="sliderRows"></span></strong></p>
 
-    <div class="slidecontainer">
         <input type="range" min="1" max="10" value="5" class="slider" id="noBall">
-        <p>Dimensiune minge: <span id="sliderBall"></span></p>
-    </div>
+        <p><strong>Ball radius: <span id="sliderBall"></span></strong></p>
 
-    <div class="slidecontainer">
         <input type="range" min="1" max="1000" value="150" class="slider" id="NumBall">
-        <p>Numar mingi: <span id="sliderNumBall"></span></p>
+        <p><strong>Number of balls: <span id="sliderNumBall"></span></strong></p>
     </div>
     <script>
         var canvas = document.getElementById("galtonCanvas");
@@ -196,7 +213,7 @@
         {
             ctx.beginPath();
             ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
-            ctx.fillStyle = "#007bff";
+            ctx.fillStyle = "#00ff9c";
             ctx.fill();
         }
 
