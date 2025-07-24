@@ -187,3 +187,18 @@ canvas {
     color: #00ff9c;
     font-weight: bold;
 }
+
+
+    .center-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background: #fff; /* Optional: add background color */
+    }
+    pre {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      text-align: center;
+      white-space: pre;
+    }
