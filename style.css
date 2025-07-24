@@ -136,6 +136,60 @@ p {
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
+.info-aiw-170 {
+    background-color: #262626;
+  color: #f0f0f0;
+  padding: 1rem 1rem; 
+  border-radius: 0.75rem;
+  /* border-left: 4px solid #00bcd4; */
+  width: 300px;
+  height: 170px;
+  overflow: auto;
+  float: left;
+  /* gap: ; */
+  /* margin-left: 100px; */
+  margin: 1rem;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+
+.info-aiw-360 {
+    background-color: #262626;
+  color: #f0f0f0;
+  padding: 1rem 1rem; 
+  border-radius: 0.75rem;
+  /* border-left: 4px solid #00bcd4; */
+  width: 300px;
+  height: 405px;
+  overflow: auto;
+  float: left;
+  /* gap: ; */
+  /* margin-left: 100px; */
+  margin: 1rem;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+
+.info-aiw-260 {
+    background-color: #262626;
+  color: #f0f0f0;
+  padding: 1rem 1rem; 
+  border-radius: 0.75rem;
+  /* border-left: 4px solid #00bcd4; */
+  width: 300px;
+  height: 250px;
+  overflow: auto;
+  float: left;
+  /* gap: ; */
+  /* margin-left: 100px; */
+  margin: 1rem;
+  font-family: "Courier New", monospace;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+}
+
 
 .info-box h3 {
   margin: 0 0 0.5rem;
@@ -202,3 +256,14 @@ canvas {
       text-align: center;
       white-space: pre;
     }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 22rem);
+  gap: 1rem;
+}
+
+.info-container {
+  display: grid;
+  gap: 1px;
+}
