@@ -1,0 +1,71 @@
+site_name: AI/ML Programmers Handbook
+site_author: Tudor Morariu
+#site_url: https://yourusername.github.io/your-repo/
+
+#repo_name: yourusername/your-repo
+#repo_url: https://github.com/yourusername/your-repo
+# edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.sections
+    - content.code.copy
+    - content.action.edit
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Documentation:
+      - Basics:
+          - Matrix Algebra: Basics/matrix.md 
+          - Statistics Basics: Basics/Statistics.md
+          - Cost/Loss Functions: Basics/CostFunctions.md
+          - Gradient Descent: Basics/GradientDescent.md
+      - Linear Models: 
+          - Linear Regression: linear_models/LinearRegression.md
+          - Losgistic Regression: linear_models/LosgisticRegression.md
+          
+      - API: docs/api.md
+
