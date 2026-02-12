@@ -46,7 +46,8 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      use_pygments: true
   - pymdownx.superfences
   - pymdownx.details
   - pymdownx.tabbed:
@@ -55,12 +56,16 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.arithmatex:
       generic: true
+      block_tag: 'div'
 
 extra_css:
   - stylesheets/index.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js
 
 nav:
   - Home: index.md
