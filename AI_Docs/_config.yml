@@ -1,10 +1,10 @@
 site_name: AI/ML Programmers Handbook
 site_author: Tudor Morariu
-#site_url: https://yourusername.github.io/your-repo/
+site_url: https://MorariuT.github.io/AI_Docs/
 
-#repo_name: yourusername/your-repo
-#repo_url: https://github.com/yourusername/your-repo
-# edit_uri: edit/main/docs/
+repo_name: MorariuT/MorariuT.github.io
+repo_url: https://github.com/MorariuT/MorariuT.github.io
+edit_uri: edit/main/AI_Docs/docs/
 
 theme:
   name: material
@@ -65,7 +65,32 @@ nav:
           - Gradient Descent: Basics/GradientDescent.md
       - Linear Models: 
           - Linear Regression: linear_models/LinearRegression.md
-          - Losgistic Regression: linear_models/LosgisticRegression.md
-          
-      - API: docs/api.md
+          - Logistic Regression: linear_models/LogisticRegression.md
+      - Neural Networks:
+          - Basics: NeuralNetworks/Basics.md
+          - Forward Propagation: NeuralNetworks/ForwardPropagation.md
+          - Back Propagation: NeuralNetworks/BackPropagation.md
+          - Simple Neural Network: NeuralNetworks/SimpleNeuralNetwork.md
+      - Computer Vision:
+          - Basics: ComputerVision/Basics.md
+          - Convolution: ComputerVision/Convolution.md
+          - CNN: ComputerVision/CNN.md
+          - Data Processing: ComputerVision/DataProcessing.md
+      - Natural Language Processing:
+          - Basics: NLP/Basics.md
+          - Simple Embedders: NLP/SimpleEmbedders.md
+          - Attention: NLP/Attention.md
+          - Transformers: NLP/Transformers.md
+      - Ensemble Models:
+          - Decision Trees: ensemble_models/DecisionTree.md
+          - Random Forests: ensemble_models/RandomForests.md
+          - Boosting: ensemble_models/Boosting.md
+          - Voting Models: ensemble_models/VotingModels.md
+      - Data Analysis:
+          - Introduction: DataAnalisys/Intro.md
+          - PCA: DataAnalisys/PCA.md
+          - LDA: DataAnalisys/LDA.md
+          - UMAP: DataAnalisys/UMap.md
+          - Statistics: DataAnalisys/Statistics.md
+          - Useful Plots: DataAnalisys/UsefullPlots.md
 
