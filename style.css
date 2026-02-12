@@ -196,6 +196,27 @@ p {
   font-size: 1.1rem;
   color: #00ff9c;
 }
+.info-box:hover{
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+.info-aiw-170:hover{
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+.info-aiw-260:hover{
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+.info-aiw-360:hover{
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+
 
  .button {
   background-color: #262626; /* Green */
