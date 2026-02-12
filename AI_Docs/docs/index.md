@@ -8,86 +8,76 @@ The goal of this project is to create an alternative to [cp-algorithms.com](http
 
 ## 📚 Quick Navigation
 
-<div class="grid cards" markdown>
-
 ### 🎯 [Getting Started](getting-started.md)
 New to this handbook? Start here to understand the structure and navigation.
 
-### 📖 [Basics](Basics/matrix.md)
-**Foundation Concepts**
+---
+
+## 📖 Documentation Sections
+
+### Basics - Foundation Concepts
+**Start here to build your fundamentals!**
 
 - [Matrix Algebra](Basics/matrix.md) - Linear algebra essentials
 - [Statistics Basics](Basics/Statistics.md) - Probability and statistics
 - [Cost/Loss Functions](Basics/CostFunctions.md) - Understanding loss functions
 - [Gradient Descent](Basics/GradientDescent.md) - Optimization fundamentals
 
-### 🔗 [Linear Models](linear_models/LinearRegression.md)
-**Classical ML Algorithms**
+### 🔗 Linear Models - Classical ML Algorithms
+**Learn fundamental machine learning algorithms.**
 
 - [Linear Regression](linear_models/LinearRegression.md) - Continuous predictions
 - [Logistic Regression](linear_models/LogisticRegression.md) - Binary classification
 
-### 🧠 [Neural Networks](NeuralNetworks/Basics.md)
-**Deep Learning Foundations**
+### 🧠 Neural Networks - Deep Learning Foundations
+**Explore the fundamentals of deep learning.**
 
 - [Basics](NeuralNetworks/Basics.md) - Network architecture
-- [Forward Propagation](NeuralNetworks/ForwardPropagation.md) - Data flow
+- [Forward Propagation](NeuralNetworks/ForwardPropagation.md) - Data flow through networks
 - [Back Propagation](NeuralNetworks/BackPropagation.md) - Training algorithms
-- [Simple Neural Network](NeuralNetworks/SimpleNeuralNetwork.md) - Implementation
+- [Simple Neural Network](NeuralNetworks/SimpleNeuralNetwork.md) - Implementation guide
 
-### 👁️ [Computer Vision](ComputerVision/Basics.md)
-**Image Processing & Analysis**
+### 👁️ Computer Vision - Image Processing & Analysis
+**Master image understanding and processing techniques.**
 
-- [Basics](ComputerVision/Basics.md) - CV fundamentals
+- [Basics](ComputerVision/Basics.md) - Computer vision fundamentals
 - [Convolution](ComputerVision/Convolution.md) - Convolutional operations
 - [CNN](ComputerVision/CNN.md) - Convolutional neural networks
 - [Data Processing](ComputerVision/DataProcessing.md) - Image preprocessing
 
-### 💬 [Natural Language Processing](NLP/Basics.md)
-**Text & Language Models**
+### 💬 Natural Language Processing - Text & Language Models
+**Work with text and language data.**
 
 - [Basics](NLP/Basics.md) - NLP fundamentals
 - [Simple Embedders](NLP/SimpleEmbedders.md) - Word representations
 - [Attention](NLP/Attention.md) - Attention mechanisms
 - [Transformers](NLP/Transformers.md) - Modern transformer models
 
-### 🌳 [Ensemble Models](ensemble_models/DecisionTree.md)
-**Combining Multiple Models**
+### 🌳 Ensemble Models - Combining Multiple Models
+**Learn to combine models for better predictions.**
 
 - [Decision Trees](ensemble_models/DecisionTree.md) - Tree-based learning
-- [Random Forests](ensemble_models/RandomForests.md) - Ensemble trees
-- [Boosting](ensemble_models/Boosting.md) - Sequential ensembles
-- [Voting Models](ensemble_models/VotingModels.md) - Model combination
+- [Random Forests](ensemble_models/RandomForests.md) - Ensemble tree methods
+- [Boosting](ensemble_models/Boosting.md) - Sequential ensemble techniques
+- [Voting Models](ensemble_models/VotingModels.md) - Model combination strategies
 
-### 📊 [Data Analysis](DataAnalisys/Intro.md)
-**Data Processing & Visualization**
+### 📊 Data Analysis - Data Processing & Visualization
+**Explore data analysis techniques and visualization.**
 
 - [Introduction](DataAnalisys/Intro.md) - Data analysis foundations
 - [PCA](DataAnalisys/PCA.md) - Principal component analysis
 - [LDA](DataAnalisys/LDA.md) - Linear discriminant analysis
-- [UMAP](DataAnalisys/UMap.md) - Dimensionality reduction
-- [Statistics](DataAnalisys/Statistics.md) - Statistical methods
+- [UMAP](DataAnalisys/UMap.md) - Dimensionality reduction visualization
+- [Statistics](DataAnalisys/Statistics.md) - Statistical analysis methods
 - [Useful Plots](DataAnalisys/UsefullPlots.md) - Visualization techniques
 
-</div>
-
 ---
 
-## 🚀 Getting Started
+## 🚀 How to Use This Handbook
 
-**New here?** Check out the [Getting Started](getting-started.md) guide to learn how to navigate this handbook.
-
-**Want to dive in?** Pick any topic above that interests you!
-
-**Looking for code examples?** Browse our [Code Examples](../../code/) folder with Jupyter notebooks.
-
----
-
-## 📖 How to Use This Handbook
-
-1. **Browse by Topic** - Use the cards above to find what you're interested in
-2. **Follow the Learning Path** - Start with Basics, then progress to more advanced topics
-3. **Use the Sidebar** - The left sidebar provides detailed navigation within each section
+1. **Browse by Topic** - Use the sections above to find what interests you
+2. **Follow the Learning Path** - Start with Basics, then progress to advanced topics
+3. **Use the Sidebar** - The left sidebar provides detailed navigation
 4. **Search** - Use the search function to find specific concepts
 
 ---
@@ -95,8 +85,8 @@ New to this handbook? Start here to understand the structure and navigation.
 ## 💡 Key Features
 
 - ✅ **Comprehensive Coverage** - From basics to advanced AI/ML concepts
-- ✅ **Well-Organized** - Logical structure with clear categories
-- ✅ **Research-Based** - Information sourced from scientific papers and personal research
+- ✅ **Well-Organized** - Logical structure with clear categories  
+- ✅ **Research-Based** - Information from scientific papers and personal research
 - ✅ **Code Examples** - Practical implementations in Jupyter notebooks
 - ✅ **Math Support** - Full LaTeX support for equations and formulas
 - ✅ **Easy Navigation** - Multiple ways to find what you need
@@ -113,7 +103,7 @@ We welcome contributions! Please:
 2. Create a feature branch
 3. Submit a pull request
 
-See the [Contributing Guide](getting-started.md#contributing) for more details.
+See the [Getting Started guide](getting-started.md#contributing) for more details.
 
 ---
 
@@ -123,7 +113,6 @@ Have questions, suggestions, or feedback?
 
 - **GitHub Issues**: [Report issues](https://github.com/MorariuT/MorariuT.github.io/issues)
 - **GitHub Discussions**: [Join discussions](https://github.com/MorariuT/MorariuT.github.io/discussions)
-- **Social Media**: Check out [@MorariuT](https://github.com/MorariuT)
 
 ---
 
@@ -138,4 +127,4 @@ Retrieved from https://MorariuT.github.io/AI_Docs/
 
 ---
 
-*Last updated: February 2026*
+**Ready to start learning?** Pick any topic above or [start with the Getting Started guide](getting-started.md)!
