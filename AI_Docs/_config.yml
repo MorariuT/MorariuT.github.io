@@ -13,22 +13,28 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.sections
+    - navigation.expand
+    - navigation.instant
     - content.code.copy
     - content.action.edit
+    - content.tabs.link
     - search.highlight
+    - search.share
+    - toc.follow
+    - toc.integrate
   palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: deep purple
+      accent: deep purple
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
 
 plugins:
   - search
