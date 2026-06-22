@@ -288,3 +288,141 @@ canvas {
   display: grid;
   gap: 1px;
 }
+
+/* New Dynamic Project Layout Styles */
+.projects-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 25px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #00ff9c;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.project-card {
+  background-color: #262626;
+  color: #f0f0f0;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,255,156,0.1);
+}
+
+.project-card h3 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.1rem;
+  color: #00ff9c;
+}
+
+.project-card p {
+  margin: 0 0 1rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.project-media {
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.project-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #1a1a1a;
+  color: #00ff9c;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.project-link:hover {
+  background-color: #333;
+}
+
+.sub-items {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sub-items li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.sub-items li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #00ff9c;
+}
+
+.sub-items a {
+  color: #00ff9c;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.sub-items a:hover {
+  text-decoration: underline;
+}
+
+/* Size variants for project cards */
+.project-small {
+  min-height: 240px;
+}
+
+.project-medium {
+  min-height: 320px;
+}
+
+.project-large {
+  grid-column: span 1;
+  min-height: 380px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-large {
+    grid-column: span 1;
+  }
+}

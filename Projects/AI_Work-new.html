@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Work</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <div class="status-bar" id="status-bar">
+    <span>2</span>
+    <span id="focused" style="font-size: 17px;">AI Work</span>  
+    <span class="time" id="time"></span>
+  </div>
+
+  <main class="grid">
+    <section class="tile focused" id="about" role="main" aria-label="AI Work Projects">
+      <div id="projects-container"></div>
+
+      <script src="../data/projects.js"></script>
+      <script src="../js/render-projects.js"></script>
+      <script>
+        // Render AI Work projects by category
+        renderProjectsByCategory('projects-container', aiWorkProjects);
+
+        // Update time in status bar
+        function updateTime() {
+          const now = new Date();
+          const timeStr = now.toLocaleTimeString('en-US', { 
+            hour12: false, 
+            hour: '2-digit', 
+            minute: '2-digit' 
+          });
+          document.querySelector('.time').textContent = timeStr;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+      </script>
+    </section>
+  </main>
+</body>
+</html>
