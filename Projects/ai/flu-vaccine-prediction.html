@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="H1N1 Flu Vaccine Prediction explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>H1N1 Flu Vaccine Prediction — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Machine%20Learning/Flu_Shot_Learnig_Predict_H1N1_and_Seasonal_Flu_Vaccines.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>09 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / machine learning</p><h1>H1N1 Flu Vaccine Prediction<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>The Flu Shot Learning task predicts whether a survey respondent received H1N1 and seasonal flu vaccines. These are two separate binary targets: receiving one does not force the answer for the other. The data describes respondents’ circumstances, behavior, and views.</p><div class="tags"><span>Machine Learning</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">survey answers → missing-value handling → encoded features → two target probabilities</p><ol><li>Keep the H1N1 and seasonal labels separate while aligning both with the same respondent rows.</li><li>Inspect categorical answers and missing values. Fit imputation and category handling on training records.</li><li>Train a predictor for each target, or use an appropriate multi-output approach.</li><li>Evaluate the probabilities for both targets using the challenge’s metric, and retain respondent IDs for submission.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Conceptual independent-target baseline.
+probabilities = {}
+for target_name in (&quot;h1n1_vaccine&quot;, &quot;seasonal_vaccine&quot;):
+    estimator = make_classifier()
+    estimator.fit(training_features, training_labels[target_name])
+    probabilities[target_name] = estimator.predict_proba(
+        validation_features
+    )[:, 1]</code></pre><p>The positive-class probability expresses the model’s estimate for one target. Running the process twice preserves the distinction between the vaccines. A hard yes/no threshold is unnecessary when the evaluation expects probabilities.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The notebook maps demographic categories to hand-chosen numbers. Such mappings can impose artificial ordering or spacing, so compare them with categorical encodings.</li><li>Missing values should be handled according to each feature’s meaning. A missing survey answer is not automatically equivalent to a negative answer.</li><li>Use held-out labels to evaluate both outputs. Do not interpret a printed training score as evidence of performance on new respondents.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The inspected preprocessing includes age-range extraction and explicit mappings for demographic and household categories. This example explains the two-target setup without claiming to reproduce the notebook’s final estimators or scores.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Machine%20Learning/Flu_Shot_Learnig_Predict_H1N1_and_Seasonal_Flu_Vaccines.ipynb">Original notebook or collection <span>↗</span></a><a href="https://www.drivendata.org/competitions/66/flu-shot-learning/">Original challenge <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./financial-inclusion.html">← Financial Inclusion in Africa</a><a href="./smoker-biosignals.html">Smoker Detection Based on Bio Signals →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

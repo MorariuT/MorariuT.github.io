@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="Water Meter Segmentation explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>Water Meter Segmentation — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/tree/main/Computer%20VIsion/Water%20Meter%20Segmentation">Source ↗</a></div></div><div class="panel-foot"><span>03 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / computer vision</p><h1>Water Meter Segmentation<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>Before reading a meter, it helps to locate the display containing the digits. This project treats that localization as segmentation: instead of assigning one label to the whole photo, the model identifies the pixels belonging to the target region.</p><div class="tags"><span>Computer Vision</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">meter photo → image preprocessing → U-Net → foreground mask → located digit region</p><ol><li>Pair every photo with the annotation describing its target region. Input and mask must refer to the same scene.</li><li>Apply geometric transformations to the image and mask together. Resizing only the image would misalign the labels.</li><li>Use an encoder to gather context and a decoder to recover spatial detail. U-Net skip connections carry information between corresponding resolutions.</li><li>Turn the output into a mask and compare it with the annotation. A crop can then be passed to a separate OCR stage.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Conceptual binary segmentation pipeline.
+mask_logits = segmentation_model(images)
+mask_probabilities = sigmoid(mask_logits)
+foreground = mask_probabilities &gt; threshold
+intersection = (foreground &amp; target_mask).sum()
+union = (foreground | target_mask).sum()
+iou = intersection / max(union, 1)</code></pre><p>A probability map preserves uncertainty at each pixel. Thresholding creates the binary foreground region used for a crop or overlap calculation. Intersection over union measures how much the predicted and target regions overlap; it is more informative than counting the many easy background pixels.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The segmentation stage locates the display; it does not by itself transcribe the number.</li><li>Use nearest-neighbor interpolation for categorical masks so that resizing does not invent intermediate class labels.</li><li>Inspect rotated meters, reflections, and small displays separately. A high average overlap can hide difficult cases.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The catalog identifies a torch-based U-Net. The repository README links the Yandex/Toloka water-meter dataset. Layer counts, training parameters, and measured scores were not available for inspection; the code is a conceptual binary-mask example.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/tree/main/Computer%20VIsion/Water%20Meter%20Segmentation">Original notebook or collection <span>↗</span></a><a href="https://www.kaggle.com/datasets/tapakah68/yandextoloka-water-meters-dataset">Dataset linked by the repository <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./digit-ocr.html">← Digit OCR</a><a href="./fashion-mnist-autoencoder.html">From Scratch MNIST Autoencoder →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

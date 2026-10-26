@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="LSTM Text Generation explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>LSTM Text Generation — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Natural%20Language%20Processing/LSTM_Text_Generation.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>05 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / natural language processing</p><h1>LSTM Text Generation<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>A next-word model learns to continue a sequence. Food reviews provide the training text: a prefix is the input and the following word is the label. Repeating the prediction process creates longer text, one token at a time.</p><div class="tags"><span>Natural Language Processing</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">review text → token IDs → embedding → LSTM → vocabulary scores → next token</p><ol><li>Build a vocabulary and convert text into integer token IDs.</li><li>Create context-and-next-token pairs. Keep the target aligned with the end of each context.</li><li>Transform tokens into learned embedding vectors, then pass the sequence through the LSTM.</li><li>Map the last recurrent output to vocabulary scores. During generation, append a chosen token and predict again.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python">embedded = embedding(token_ids)
+sequence_outputs, state = recurrent_layer(embedded)
+last_output = sequence_outputs[:, -1, :]
+next_token_logits = vocabulary_projection(last_output)
+loss = cross_entropy(next_token_logits, target_token)</code></pre><p>The LSTM produces an output at each sequence position. Selecting the final one summarizes the available context for the next-word decision. The output layer has one score per vocabulary item. Cross-entropy expects those scores directly, rather than a manually computed probability vector.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The inspected notebook starts with 1,000 food reviews. A small training sample can limit vocabulary coverage and encourage repeated phrases.</li><li>Overlapping context windows can share most of their words. Split by review before constructing windows when measuring performance on unseen reviews.</li><li>Greedy selection tends to repeat safe words; sampling changes variety. Neither a fluent sample nor a low training loss establishes factual reliability.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The active TudorNet model uses a 64-dimensional embedding and a three-layer LSTM with hidden size 128. Its output layer predicts vocabulary scores from the last time step. Training code uses Adam and cross-entropy. The snippet rewrites that forward-pass idea in shorter form.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Natural%20Language%20Processing/LSTM_Text_Generation.ipynb">Original notebook or collection <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./fashion-mnist-autoencoder.html">← From Scratch MNIST Autoencoder</a><a href="./vaccination-tweets.html">Vaccination Tweet Classification →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

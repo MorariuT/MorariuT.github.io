@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="Vaccination Tweet Classification explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>Vaccination Tweet Classification — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Natural%20Language%20Processing/Vaccination_Tweet_Classifier.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>06 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / natural language processing</p><h1>Vaccination Tweet Classification<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>This project turns short, noisy social-media messages into numeric features and predicts their vaccination-related labels. The difficult part is preserving meaning while cleaning text: slang, repeated letters, and negation can change how a message should be interpreted.</p><div class="tags"><span>Natural Language Processing</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">tweet → text cleaning → TF-IDF features → classifier → class probabilities</p><ol><li>Load the labeled training messages and unlabeled test messages.</li><li>Normalize text and expand slang where appropriate. Inspect examples after cleaning rather than assuming every rule helps.</li><li>Fit a TF-IDF vocabulary on training text, then transform other messages using that same vocabulary.</li><li>Train a classifier and produce probabilities. Keep the relationship between probability columns and class labels explicit.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># A compact example of the fitted-vocabulary pattern.
+vectorizer = TfidfVectorizer()
+training_features = vectorizer.fit_transform(training_messages)
+validation_features = vectorizer.transform(validation_messages)
+classifier.fit(training_features, training_labels)
+probabilities = classifier.predict_proba(validation_features)</code></pre><p>TF-IDF represents a message by weighted token frequencies. Fitting learns the vocabulary and weighting statistics; transforming reuses them. A word absent from the fitted vocabulary cannot gain a new feature simply because it appears in validation data.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The notebook exports a score computed from the first and third probability columns. Verify the classifier’s class ordering before interpreting that score.</li><li>Some string replacement calls in the notebook do not assign their returned values. Python strings are immutable, so those calls alone do not update the original text.</li><li>Compare preprocessing variants using held-out labels. Removing short words or repeated characters can remove useful distinctions.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The notebook contains slang expansion, stemming, TF-IDF features, and a GradientBoostingClassifier with 1,000 estimators. Its final vectorizer is fitted on training messages and applied to test messages. The snippet highlights that fitted-vocabulary step.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Natural%20Language%20Processing/Vaccination_Tweet_Classifier.ipynb">Original notebook or collection <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./lstm-text-generation.html">← LSTM Text Generation</a><a href="./book-price-prediction.html">Book Price Prediction →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

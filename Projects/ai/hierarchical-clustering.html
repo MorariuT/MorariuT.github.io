@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="Hierarchical Clustering explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>Hierarchical Clustering — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/Hierarchical_Clustering.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>18 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / things from scratch</p><h1>Hierarchical Clustering<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>Agglomerative clustering starts with one cluster per point and repeatedly merges two clusters. Unlike k-means, it constructs a hierarchy. The distance rule between groups, called linkage, determines which merges happen first.</p><div class="tags"><span>Things From Scratch</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">singleton clusters → distinct cluster pairs → linkage distance → closest merge → repeat</p><ol><li>Assign every point its own cluster label.</li><li>Compare only distinct pairs of clusters. A cluster must never be selected for merging with itself.</li><li>Calculate a defined linkage distance, such as the minimum, maximum, or mean cross-cluster point distance.</li><li>Merge the closest pair, update membership, and stop at the requested number of clusters.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Conceptual average-linkage merge; membership stores point indices.
+pairs = [(a, b) for a in range(len(groups))
+         for b in range(a + 1, len(groups))]
+a, b = min(pairs, key=lambda pair: average_linkage(
+    points[groups[pair[0]]], points[groups[pair[1]]]
+))
+groups[a] = groups[a] + groups[b]
+del groups[b]</code></pre><p>Restricting b to indices greater than a avoids duplicate comparisons and self-comparisons. Average linkage should average cross-cluster distances; summing them without normalization changes how cluster size influences the decision. Recomputing pair distances after a merge is necessary because membership has changed.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The catalog already marks this experiment as not quite working. Its inspected code compares clusters with themselves, which can select a non-merge.</li><li>The source accumulates cross-point distances without averaging. That is not standard average linkage.</li><li>The displayed relabeling block is inside the outer cluster-comparison loop. A correct implementation first finishes selecting the globally closest pair, then performs one merge.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The notebook defines HC_Agglomerative, initializes singleton labels, and searches cluster pairs using nested loops. The snippet demonstrates a corrected merge-selection idea, not a claim that the original experiment is complete.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/Hierarchical_Clustering.ipynb">Original notebook or collection <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./kmeans.html">← KMeans</a><a href="./ioai-2025.html">IOAI 2025 →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

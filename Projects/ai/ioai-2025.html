@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="IOAI 2025 explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>IOAI 2025 — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/tree/main/Competitions/IOAI%202025">Source ↗</a></div></div><div class="panel-foot"><span>19 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / competitions</p><h1>IOAI 2025<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>International Olympiad in Artificial Intelligence, Beijing, China. This entry is a collection of competition work, rather than one model with a single input and output. Understanding it starts with the task statement: what is given, what must be predicted, and how a submission is evaluated.</p><div class="tags"><span>Competitions</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">task statement → dataset inspection → validation split → baseline → experiments → submission</p><ol><li>Use the portal’s task statement as the specification. Different rounds can have different modalities, target formats, and evaluation rules; choose the matching notebook before reading any model code.</li><li>Create a local validation set that resembles the challenge’s test conditions. Fit preprocessing and train the model using only the training portion.</li><li>Record a simple baseline before changing the model. Compare experiments using the same split and the same metric.</li><li>Inspect the submission writer last. Every prediction must remain aligned with the correct identifier and required column.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># A reading checklist, expressed as pseudocode.
+specification = read_task_statement()
+training_data, held_out = make_validation_split(labeled_data)
+baseline = train_baseline(training_data)
+validation_predictions = baseline.predict(held_out.inputs)
+compare_with_labels(validation_predictions, held_out.labels)
+# Export only after checking IDs, column names, and target format.</code></pre><p>The validation result is useful only when the split and metric match the problem. A model that looks strong on a random split can fail when the hidden test set represents later dates, unseen groups, or different data sources. A submission file also needs correct row identity, not merely the expected number of predictions.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>This overview explains how to read and evaluate the collection. It does not attribute an uninspected architecture, score, or task solution to the author.</li><li>The repository README says datasets are not included. Use the linked challenge or dataset instructions when reproducing a notebook.</li><li>Keep a record of the notebook version, seed, split, and parameters when comparing experiments.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The README points to the IOAI competition portal. The catalog identifies the 2025 Beijing edition. Individual task statements and notebook contents were not available for detailed inspection.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/tree/main/Competitions/IOAI%202025">Original notebook or collection <span>↗</span></a><a href="https://ioai.bohrium.com/competitions">Competition portal linked by the repository <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./hierarchical-clustering.html">← Hierarchical Clustering</a><a href="./iaio-2024.html">IAIO 2024 →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

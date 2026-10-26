@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="From Scratch MNIST Autoencoder explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>From Scratch MNIST Autoencoder — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Computer%20VIsion/From_Scratch_Auto_Encoder_MNIST.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>04 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / computer vision</p><h1>From Scratch MNIST Autoencoder<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>This experiment compresses Fashion-MNIST clothing images and reconstructs them. The target is the original image, so labels such as shirt or shoe are unnecessary for the reconstruction objective. A compact hidden vector must preserve enough information to produce recognizable pixels.</p><div class="tags"><span>Computer Vision</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">28 × 28 clothing image → 784 values → encoder → 8 features → decoder → reconstructed image</p><ol><li>Load Fashion-MNIST and scale pixel intensities into the 0–1 range.</li><li>Flatten each 28 by 28 grayscale image into 784 values.</li><li>Send the values through the encoder, reducing the representation to eight features.</li><li>Decode those features and compare the resulting pixels with the original. Evaluate both familiar and held-out images.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Simplified reconstruction objective.
+flat_images = images.reshape(-1, 784)
+latent = encoder(flat_images)
+reconstruction = decoder(latent)
+loss = ((reconstruction - flat_images) ** 2).mean()
+loss.backward()</code></pre><p>The loss is low when reconstructed pixels are close to the target pixels. It does not directly measure whether the hidden features correspond to useful clothing concepts. An eight-feature bottleneck makes compression visible: fine detail may disappear even when the overall shape survives.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>Despite the filename, the data loader uses Fashion-MNIST, not the handwritten-digit dataset.</li><li>A denoising objective needs corrupted inputs paired with clean targets. Reconstructing clean inputs alone is not sufficient evidence of a denoising model.</li><li>The inspected encoder is deterministic. A notebook heading saying VAE does not establish variational sampling or a KL penalty.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The inspected notebook loads data through Keras and defines the model in PyTorch. Its encoder uses 784 → 512 → 256 → 8 linear layers with ReLU activations. The sketch below separates the general reconstruction objective from framework setup.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Computer%20VIsion/From_Scratch_Auto_Encoder_MNIST.ipynb">Original notebook or collection <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./water-meter-segmentation.html">← Water Meter Segmentation</a><a href="./lstm-text-generation.html">LSTM Text Generation →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

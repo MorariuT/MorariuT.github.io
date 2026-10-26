@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="Stochastic Gradient Descent explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>Stochastic Gradient Descent — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/StochasticGradientDescent.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>14 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / things from scratch</p><h1>Stochastic Gradient Descent<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>A full-dataset gradient can be expensive. Stochastic gradient descent uses one example at a time; mini-batch gradient descent uses a small group. The notebook’s batch_size parameter places it in the mini-batch family.</p><div class="tags"><span>Things From Scratch</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">shuffle rows → disjoint mini-batches → gradient per batch → repeated updates</p><ol><li>Shuffle feature rows and targets with the same permutation at the start of an epoch.</li><li>Slice a batch of aligned examples.</li><li>Calculate a gradient from that batch and update the weights immediately.</li><li>Continue until every row has been visited. Repeat for multiple epochs.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Corrected non-overlapping mini-batch traversal.
+order = rng.permutation(len(features))
+for start in range(0, len(order), batch_size):
+    rows = order[start:start + batch_size]
+    gradient = mse_gradient(features[rows], targets[rows], weights)
+    weights -= learning_rate * gradient</code></pre><p>An epoch is one pass through all training rows. Stepping by batch_size creates distinct slices, and using len(order) as the upper bound covers the complete dataset. The final batch can be smaller; a mean-gradient implementation should divide by its actual size.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The notebook loops from 0 to batch_size with a step of one, creating overlapping batches rather than traversing the whole shuffled dataset.</li><li>Its gradient uses y minus prediction and its update adds that value. Those signs can be consistent together; compare the complete formula rather than one line in isolation.</li><li>Noisy training loss is expected when updates use small subsets. Evaluate at a consistent point, such as the end of each epoch.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The notebook shuffles with np.random.permutation and defines batch_size=64 by default. The reference below changes the slice traversal to show a complete mini-batch epoch.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/StochasticGradientDescent.ipynb">Original notebook or collection <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./momentum-gradient-descent.html">← Momentum Gradient Descent</a><a href="./weight-decay-gradient-descent.html">Weight Decay Gradient Descent →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

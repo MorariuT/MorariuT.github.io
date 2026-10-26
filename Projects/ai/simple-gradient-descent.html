@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="Simple Gradient Descent explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>Simple Gradient Descent — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/SimpleGradientDescent.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>12 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / things from scratch</p><h1>Simple Gradient Descent<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>The simplest optimizer updates every parameter using a gradient calculated from the full training set. For linear regression, the prediction is a weighted sum of input features. The learning rate determines how far to move after each gradient calculation.</p><div class="tags"><span>Things From Scratch</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">all training rows → signed residuals → full-batch gradient → updated weights</p><ol><li>Initialize one weight per feature. Include a separate bias or a constant feature if an intercept is required.</li><li>Compute predictions for every training row and subtract the target values.</li><li>Multiply the residuals by the transposed feature matrix to accumulate each feature’s contribution.</li><li>Update the weights and check a consistent objective. Use a maximum iteration count as well as any convergence criterion.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Corrected reference for mean squared error, not a notebook excerpt.
+for step in range(max_steps):
+    residual = features @ weights - targets
+    gradient = 2 * features.T @ residual / len(features)
+    weights -= learning_rate * gradient</code></pre><p>A feature contributes more to the update when it is large on rows with large signed errors. Standardizing feature scales can prevent a single feature from dominating the optimization. If the learning rate is too large, the updates can jump past a good solution and increase the loss.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The notebook computes an absolute error and multiplies it by X.T. Removing the error sign changes the intended gradient direction.</li><li>Its example data comes from make_regression. A one-feature demonstration can hide mistakes that become visible with several features.</li><li>The loop uses an improvement threshold and a counter. Add a hard iteration limit when adapting the experiment so it cannot run indefinitely.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The source defines a NumPy LinearRegression class with predict, error, calc_grad, update_weights, and train methods. The corrected sketch below states an explicit MSE objective so that its update can be checked algebraically.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/SimpleGradientDescent.ipynb">Original notebook or collection <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./gradient-descent.html">← Gradient Descent + All the Flavors</a><a href="./momentum-gradient-descent.html">Momentum Gradient Descent →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

@@ -131,3 +131,16 @@ button:hover { background: var(--green); }
 @media (max-width: 780px) { .host { display: none; } main { grid-template-columns: minmax(0, 1fr); } .sidebar { position: static; } .sidebar-body { padding: 14px; } .identity, .outline-label, .sidebar-links, .panel-foot { display: none; } .outline { flex-direction: row; flex-wrap: wrap; gap: 3px 20px; } .outline a { padding: 3px 0; } .sidebar .titlebar { min-height: 28px; } .page-heading { padding-top: 5px; } .hero-name { font-size: 60px; } .intro-grid { grid-template-columns: 1fr 1fr; } .hero-name br { display: block; } .shortcut-hint { display: none; } }
 @media (max-width: 540px) { .bar { height: 46px; } .brand { padding: 5px 13px; font-size: 19px; } .bar nav { flex: 1; } .bar nav a { flex: 1; padding: 13px 8px; font-size: 10px; text-align: center; } .bar nav a span { margin-right: 3px; } main { padding: 14px 12px 65px; gap: 18px; } h1 { font-size: 30px; } .projects-grid, .bottom-grid, .intro-grid { grid-template-columns: minmax(0, 1fr); } .hero-name br { display: none; } .hero-name { font-size: 50px; letter-spacing: -3px; } .panel-body { padding: 16px; } .command { margin-bottom: 24px; } .titlebar { padding: 6px 10px; font-size: 10px; } .status { padding: 8px 12px; font-size: 9px; } .layout-status { display: none; } .page-heading { padding-bottom: 23px; } .project-media img, .project-media video { height: auto; max-height: 240px; } .text-preview { height: 150px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Static AI notebook walkthroughs. */
+.flow { padding: 16px; border-left: 2px solid var(--mint); background: var(--panel); color: var(--green); overflow-wrap: anywhere; }
+.panel-body ol { padding-left: 24px; }
+.panel-body ol li { padding-left: 5px; margin-bottom: 16px; max-width: 85ch; }
+.explanation-link { display: block; padding-top: 14px; margin-top: 16px; border-top: 1px solid var(--line); font-size: 11px; }
+.article-pagination { display: flex; justify-content: space-between; gap: 24px; padding: 16px 0; font-size: 11px; }
+.article-pagination a { max-width: 48%; }
+.article-pagination a:last-child { text-align: right; }
+@media (max-width: 540px) { .article-pagination { font-size: 10px; gap: 16px; } }
+.board-figure { margin: 0; }
+.board-figure svg { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+.board-figure figcaption { font-size: 11px; color: var(--muted); margin-top: 14px; }

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="Financial Inclusion in Africa explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>Financial Inclusion in Africa — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/tree/main/Machine%20Learning/">Source ↗</a></div></div><div class="panel-foot"><span>08 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / machine learning</p><h1>Financial Inclusion in Africa<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>The catalog describes a financial-inclusion prediction task used while preparing for IAIO 2024. A typical version of this problem predicts whether a survey respondent has a bank account from demographic and household information. That framing is useful for understanding the task, but the linked notebook could not be retrieved.</p><div class="tags"><span>Machine Learning</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">survey records → consistent feature preparation → classifier → account-status prediction</p><ol><li>Read the dataset’s target definition first. Distinguish actual account ownership from related concepts such as access or usage.</li><li>Separate respondent identifiers from potential predictors. Encode categorical answers consistently.</li><li>Create a validation split before fitting transformations or selecting a model.</li><li>Compare predictions with the labels using the metric specified by the original challenge. Inspect errors by relevant groups as well as in aggregate.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Conceptual outline, not a recovered notebook implementation.
+train_rows, validation_rows = split_labeled_records(records)
+preprocessor.fit(train_rows.features)
+X_train = preprocessor.transform(train_rows.features)
+X_valid = preprocessor.transform(validation_rows.features)
+classifier.fit(X_train, train_rows.labels)
+predictions = classifier.predict(X_valid)</code></pre><p>The key separation is between fitting and transforming. Fitting learns encodings, imputation values, or other statistics from training records. Validation records should only be transformed with those learned values. Otherwise the evaluation no longer represents unseen data.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The catalog’s Financial_Inclusion_In_Africa.ipynb URL returned 404 during preparation. The source link here opens the repository’s machine-learning directory instead.</li><li>The repository README says its original Zindi dataset was deleted. No exact feature list, model choice, score, or training configuration is asserted here.</li><li>Respondents can share a household or location. If the dataset contains such groups, consider a split that reflects how predictions will actually be used.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>This page is a task-level explanation based on the catalog and repository README. Its code is a conceptual pipeline; implementation-specific details require the original notebook and dataset.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/tree/main/Machine%20Learning/">Original notebook or collection <span>↗</span></a><a href="https://github.com/MorariuT/ai_work/blob/main/Machine%20Learning/README.md">Repository dataset notes <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./book-price-prediction.html">← Book Price Prediction</a><a href="./flu-vaccine-prediction.html">H1N1 Flu Vaccine Prediction →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

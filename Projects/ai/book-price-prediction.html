@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="Book Price Prediction explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>Book Price Prediction — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Machine%20Learning/Book_Price_Prediction.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>07 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / machine learning</p><h1>Book Price Prediction<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>Book price prediction is a regression problem: the target is a number rather than a class. The notebook explores turning descriptive book metadata into features that a linear model can use.</p><div class="tags"><span>Machine Learning</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">book metadata → feature engineering → linear regression → predicted price</p><ol><li>Separate the price target from metadata so that the model cannot read the answer directly.</li><li>Convert edition and category information into numeric features. Preserve the same feature columns at prediction time.</li><li>Split the examples into training and validation data, then fit preprocessing using the training portion.</li><li>Fit a regression model and inspect both aggregate errors and individual expensive or unusual books.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Illustrative regression workflow; features must already be numeric.
+X_train, X_valid, y_train, y_valid = train_test_split(
+    features, prices, test_size=0.2, random_state=42
+)
+regressor = LinearRegression().fit(X_train, y_train)
+predicted_prices = regressor.predict(X_valid)
+validation_mae = abs(predicted_prices - y_valid).mean()</code></pre><p>A linear model combines the feature values with learned weights. Mean absolute error measures a typical error in the same units as price, which makes it easier to interpret than a unitless score alone. Examine residuals to see whether higher-priced books are systematically underestimated.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The notebook constructs an author-average-price feature before its displayed validation split. Because that feature uses the target, it can leak validation prices into the model inputs.</li><li>Compute target-derived author statistics within each training fold. For training rows, out-of-fold encoding or leave-one-out logic avoids encoding each row using its own answer.</li><li>Choose a fallback for authors absent from training and document it. Numerical encodings of book types also impose assumptions a linear model will learn from.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The inspected notebook engineers category, edition, review, and author-average-price features, then fits scikit-learn LinearRegression and reports R². The example below uses MAE to illustrate an additional interpretable check; it is not a reproduction of the notebook’s result.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Machine%20Learning/Book_Price_Prediction.ipynb">Original notebook or collection <span>↗</span></a><a href="https://www.kaggle.com/competitions/book-prices-prediction/data">Dataset linked by the repository <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./vaccination-tweets.html">← Vaccination Tweet Classification</a><a href="./financial-inclusion.html">Financial Inclusion in Africa →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="KMeans explained: problem, workflow, key code ideas, and implementation notes.">
+  <title>KMeans — AI Work — Tudor Morariu</title>
+  <link rel="icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../../index.html"><span>1</span> home</a><a href="../AI_Work.html" aria-current="page"><span>2</span> projects</a><a href="../../Misc/awards.html"><span>3</span> awards</a><a href="../proiect.html"><span>4</span> lab</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/ai-work</span><span>[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../AI_Work.html">AI Work<span>← back to the collection</span></a><p class="outline-label">ON THIS PAGE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General info</a><a href="#workflow"><span>02</span> How it works</a><a href="#code"><span>03</span> Key code idea</a><a href="#notes"><span>04</span> What to watch for</a><a href="#source"><span>05</span> Source & reading</a></nav><div class="sidebar-links"><a href="../AI_Work.html">All projects</a><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/KMeans.ipynb">Source ↗</a></div></div><div class="panel-foot"><span>17 / 22 explanations</span><span class="green">●</span></div></aside>
+    <div class="page-content">
+      <header class="page-heading"><p class="breadcrumb"><a href="../AI_Work.html">~ / ai-work</a> / things from scratch</p><h1>KMeans<span class="green">_</span></h1><p>A closer look at the problem, the data flow, and the code.</p></header>
+      <section id="overview" class="window content-panel"><div class="titlebar"><h2>~/overview</h2><span>[ read ]</span></div><div class="panel-body"><p>K-means groups points without class labels. It maintains a fixed number of cluster centers and alternates between assigning points to centers and moving each center to the average of its assigned points.</p><div class="tags"><span>Things From Scratch</span><span>Python / notebooks</span></div></div></section><section id="workflow" class="window content-panel"><div class="titlebar"><h2>~/how-it-works</h2><span>[ walkthrough ]</span></div><div class="panel-body"><p class="flow">initial centers → nearest-center assignment → cluster means → repeat</p><ol><li>Choose the number of clusters and initialize their centers.</li><li>Measure each point’s distance to every center, then assign it to the nearest one.</li><li>Replace each center with the mean of its assigned points.</li><li>Repeat until the centers stop changing sufficiently or a fixed iteration budget is reached.</li></ol></div></section><section id="code" class="window content-panel"><div class="titlebar"><h2>~/key-code-idea</h2><span>[ python ]</span></div><div class="panel-body"><p>Illustrative sketch. This is a shortened teaching example or pseudocode, not a complete runnable notebook or a verbatim source excerpt.</p><pre><code class="language-python"># Simplified NumPy assignment-and-update step.
+distance_squared = ((points[:, None, :] - centers[None, :, :]) ** 2).sum(axis=2)
+assignment = distance_squared.argmin(axis=1)
+for cluster_id in range(len(centers)):
+    members = points[assignment == cluster_id]
+    if len(members):
+        centers[cluster_id] = members.mean(axis=0)</code></pre><p>Broadcasting creates one distance per point-center pair. Each row’s smallest entry determines the assignment. Updating the mean moves a center toward its members. Empty clusters need a separate policy; silently averaging an empty array would produce invalid values.</p></div></section><section id="notes" class="window content-panel"><div class="titlebar"><h2>~/implementation-notes</h2><span>[ inspect ]</span></div><div class="panel-body"><ul><li>The notebook initializes centers with integers between 0 and 3, independent of the data range. Choosing actual data points or k-means++ can make initialization more meaningful.</li><li>The fit method decrements self.iter directly. Reusing the same fitted object can therefore leave no iteration budget for another call.</li><li>Cluster numbers are arbitrary identifiers. Cluster 0 is not inherently the same as class 0 in a labeled demonstration.</li></ul></div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ references ]</span></div><div class="panel-body"><p>The source implements Euclidean distance, nearest-center assignment, mean updates, and random reinitialization for empty clusters. Its demonstration uses synthetic blobs. The vectorized example rewrites one update step without reproducing the full class.</p><div class="link-list"><a href="https://github.com/MorariuT/ai_work/blob/main/Misc/Things%20From%20Scratch/KMeans.ipynb">Original notebook or collection <span>↗</span></a></div></div></section>
+      <nav class="article-pagination" aria-label="More explanations"><a href="./word2vec.html">← Word2Vec From Scratch</a><a href="./hierarchical-clustering.html">Hierarchical Clustering →</a></nav>
+      <footer class="page-footer"><a href="../AI_Work.html">← Back to AI Work</a><a href="#main">Back to top ↑</a></footer>
+    </div>
+  </main>
+  <footer class="status"><span><span class="green">●</span> ai-work<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span>HTML / CSS</span></footer>
+</body>
+</html>
