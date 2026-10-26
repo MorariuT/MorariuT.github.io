@@ -1,51 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Evolution Simulator</title>
-<meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- Prism Theme (Choose any like prism-tomorrow, prism-okaidia, etc.) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" />
-
-  <!-- Prism Core -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
-
-  <!-- Load C++ language support -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
-
-  <link rel="stylesheet" href="../style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="A neural network, a genetic algorithm, and a biology presentation.">
+  <title>Evolution Simulator — Tudor Morariu</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../js/site.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css"><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-clike.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-c.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-cpp.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-python.min.js"></script>
 </head>
-<body>
-  <div class="status-bar" id="status-bar">
-    <span>2</span>
-    <span id="focused">Evolution Simulator</span>  
-    <span class="time" id="time"></span>
-  </div>
+<body data-workspace="projects">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../index.html"><span>1</span> home</a><a href="../index.html#projects" aria-current="page"><span>2</span> projects</a><a href="../Misc/awards.html"><span>3</span> awards</a><a href="../Projects/proiect.html"><span>4</span> play</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/workspace</span><span aria-hidden="true">[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../index.html">Tudor Morariu<span>programming & other things</span></a><p class="outline-label">IN THIS WORKSPACE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General Info</a><a href="#demo"><span>02</span> Demo</a><a href="#explanation"><span>03</span> Explanation</a><a href="#source"><span>04</span> Source code</a></nav><div class="sidebar-links"><a href="https://github.com/MorariuT">GitHub ↗</a><a href="https://www.linkedin.com/in/tudor-morariu-01a77b14b">LinkedIn ↗</a></div></div><div class="panel-foot"><span>plain text. real projects.</span><span class="green">●</span></div></aside>
+    <div class="page-content"><header class="page-heading"><p class="breadcrumb">~ / projects / <span>evolution simulator</span></p><h1>Evolution Simulator<span class="green">_</span></h1><p>A neural network, a genetic algorithm, and a biology presentation.</p></header><section id="overview" class="window content-panel"><div class="titlebar"><h2>General Info</h2><span>[ read ]</span></div><div class="panel-body">
+      <p>I made this project for my Biology class, at the chapter of neurology.</p>
+      </div></section><section id="demo" class="window content-panel"><div class="titlebar"><h2>Demo</h2><span>[ read ]</span></div><div class="panel-body">
 
-  <main class="grid">
-    <section class="tile focused" id="about" role="main" aria-label="About Tudor">
-      <h1 style="font-size: 25px;">General Info</h1>
-      <p style="font-size: 17px;">I made this project for my Biology class, at the chapter of neurology.</p>
-      <h1 style="font-size: 25px;">Some Video</h1>
-      <!-- <p>The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p> -->
 
       <div class="photo-row">
-         <video width="900" height="600" controls>
+         <video preload="metadata" width="900" height="600" controls>
             <source src="../media/video_full.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-    
-        <h1 style="font-size: 25px;">Explanation</h1>
-            <p style="font-size: 17px;">In this section I will (try to) explain the code.</p>
 
-            <p style="font-size: 17px;">The important part of the code is the neural network (nn).</p>
-            <p style="font-size: 17px;">Here in the <a>__init__</a> funtion we define a brain as a nn with 3 inputs, 10 hidden neurons on 1 layer and 3 outputs.</p>
-            <p style="font-size: 17px;">The <a>think</a> function does a simple matrix multiplication on matrices. So, for a given input of shape (3,), first it multiplies it with a matrix of shape (3, 10) as a result a vector of shape (10,) then it multiplies it with a matrix of shape (10, 10), results a vector of shape (10,) and finally we multiply the vector with a matrix of shape (3, 10) resulting in a vector of lenght 3 </p>
+        </div></section><section id="explanation" class="window content-panel"><div class="titlebar"><h2>Explanation</h2><span>[ read ]</span></div><div class="panel-body">
+            <p>In this section I will (try to) explain the code.</p>
+
+            <p>The important part of the code is the neural network (nn).</p>
+            <p>Here in the <code>__init__</code> funtion we define a brain as a nn with 3 inputs, 10 hidden neurons on 1 layer and 3 outputs.</p>
+            <p>The <code>think</code> function does a simple matrix multiplication on matrices. So, for a given input of shape (3,), first it multiplies it with a matrix of shape (3, 10) as a result a vector of shape (10,) then it multiplies it with a matrix of shape (10, 10), results a vector of shape (10,) and finally we multiply the vector with a matrix of shape (3, 10) resulting in a vector of lenght 3 </p>
             <pre>
                 <code class="language-python">
     def __init__(self, brain=None, color=(0, 200, 0)):
@@ -59,31 +47,31 @@
             self.brain = brain;
         else:
             self.brain = {
-                "w1": np.random.randn(3, 10),
-                "w2": np.random.randn(10, 10),
-                "out": np.random.randn(10, 3),
+                &quot;w1&quot;: np.random.randn(3, 10),
+                &quot;w2&quot;: np.random.randn(10, 10),
+                &quot;out&quot;: np.random.randn(10, 3),
             }
 
     def think(self, inputs):
 
-        h = np.dot(inputs, self.brain["w1"])
+        h = np.dot(inputs, self.brain[&quot;w1&quot;])
         h = np.maximum(0, h);
 
         for idx in range(2, len(self.brain)):
-            h = np.dot(h, self.brain["w" + str(idx)]);
+            h = np.dot(h, self.brain[&quot;w&quot; + str(idx)]);
             h = np.maximum(0, h);
 
-        out = np.dot(h, self.brain["out"]);
+        out = np.dot(h, self.brain[&quot;out&quot;]);
         return np.tanh(out);
     </code>
             </pre>
 
-            <p style="font-size: 17px;">Here we take the colsest food object to the blob, then calculate the distance to it, and compose the input vector as distance on X axis, Y axis and both axis.</p>
-            <p style="font-size: 17px;">Then we pass it through the nn and apply the result to X, Y. The output of the nn is <a>[dir_X, dir_Y, acceleration]</a></p>
+            <p>Here we take the colsest food object to the blob, then calculate the distance to it, and compose the input vector as distance on X axis, Y axis and both axis.</p>
+            <p>Then we pass it through the nn and apply the result to X, Y. The output of the nn is <code>[dir_X, dir_Y, acceleration]</code></p>
 
             <pre>
-                <code class="language-python">        
-            
+                <code class="language-python">
+
     def update(self, food_list):
         if not food_list:
             return
@@ -106,26 +94,25 @@
         self.x = max(0, min(WIDTH - 1, self.x));
         self.y = max(0, min(HEIGHT - 1, self.y));
 
-        if distance(self.x, self.y, closest[0], closest[1]) < 10:
+        if distance(self.x, self.y, closest[0], closest[1]) &lt; 10:
             food_list.remove(closest)
             self.food_eaten += 1</code>
 
 
             </pre>
 
-            <p style="font-size: 17px;">In this final part, we mutate the brain, aka. we add a random number to each weight.</p>
+            <p>In this final part, we mutate the brain, aka. we add a random number to each weight.</p>
             <pre>
                 <code class="language-python">
     def mutate_brain(brain):
         new_brain = {}
         for key in brain:
-            new_brain[key] = brain[key] + (np.random.randn(*brain[key].shape) * 0.3 if random.random() < MUTATION_RATE else 0)
+            new_brain[key] = brain[key] + (np.random.randn(*brain[key].shape) * 0.3 if random.random() &lt; MUTATION_RATE else 0)
         return new_brain</code>
             </pre>
 
-    </section>
+    </div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ read ]</span></div><div class="panel-body"><a class="text-link" href="https://github.com/MorariuT/Evolution-Simulator">View the full source on GitHub ↗</a></div></section><footer class="page-footer"><a href="../index.html">← Back to home</a><a href="#main">Back to top ↑</a></footer></div>
   </main>
-
-  <script src="script.js"></script>
+  <footer class="status"><span><span class="green">●</span> projects<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span class="shortcut-hint">alt + 1 / 2 / 3 / 4</span><time id="clock"></time></footer>
 </body>
 </html>

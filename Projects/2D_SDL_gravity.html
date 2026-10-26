@@ -1,74 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tudor Morariu</title>
-<meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- Prism Theme (Choose any like prism-tomorrow, prism-okaidia, etc.) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.css" />
-
-  <!-- Prism Core -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
-
-  <!-- Load C++ language support -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-cpp.min.js"></script>
-
-  <link rel="stylesheet" href="../style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1e1e1e">
+  <meta name="description" content="A simple simulation of planets and gravitational attraction.">
+  <title>2D SDL Gravity Simulator — Tudor Morariu</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../js/site.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/themes/prism-tomorrow.min.css"><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/prism.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-clike.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-c.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-cpp.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/components/prism-python.min.js"></script>
 </head>
-<body>
-  <div class="status-bar" id="status-bar">
-    <span>2</span>
-    <span id="focused" style="font-size: 17px;">2D Gravity Simulator</span>  
-    <span class="time" id="time"></span>
-  </div>
+<body data-workspace="projects">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="bar"><a class="brand" href="../index.html" aria-label="Tudor Morariu home">tm<span>_</span></a><nav aria-label="Workspaces"><a href="../index.html"><span>1</span> home</a><a href="../index.html#projects" aria-current="page"><span>2</span> projects</a><a href="../Misc/awards.html"><span>3</span> awards</a><a href="../Projects/proiect.html"><span>4</span> play</a></nav><a class="host" href="https://github.com/MorariuT">tudor@internet <span>↗</span></a></header>
+  <main id="main" tabindex="-1" class="page-layout">
+    <aside class="sidebar window"><div class="titlebar"><span>~/workspace</span><span aria-hidden="true">[ tree ]</span></div><div class="sidebar-body"><a class="identity" href="../index.html">Tudor Morariu<span>programming & other things</span></a><p class="outline-label">IN THIS WORKSPACE</p><nav class="outline" aria-label="Page outline"><a href="#overview"><span>01</span> General Info</a><a href="#demo"><span>02</span> Demo</a><a href="#explanation"><span>03</span> Explanation</a><a href="#source"><span>04</span> Source code</a></nav><div class="sidebar-links"><a href="https://github.com/MorariuT">GitHub ↗</a><a href="https://www.linkedin.com/in/tudor-morariu-01a77b14b">LinkedIn ↗</a></div></div><div class="panel-foot"><span>plain text. real projects.</span><span class="green">●</span></div></aside>
+    <div class="page-content"><header class="page-heading"><p class="breadcrumb">~ / projects / <span>2d sdl gravity simulator</span></p><h1>2D SDL Gravity Simulator<span class="green">_</span></h1><p>A simple simulation of planets and gravitational attraction.</p></header><section id="overview" class="window content-panel"><div class="titlebar"><h2>General Info</h2><span>[ read ]</span></div><div class="panel-body">
+      <p>A youtube video inspired me to do this project. I simplified it (the video was making 3D graphics) but i think it looks pretty good.</p>
+      </div></section><section id="demo" class="window content-panel"><div class="titlebar"><h2>Demo</h2><span>[ read ]</span></div><div class="panel-body">
 
-  <main class="grid">
-    <section class="tile focused" id="about" role="main" aria-label="About Tudor">
-      <h1 style="font-size: 25px;">General Info</h1>
-      <p style="font-size: 17px;">A youtube video inspired me to do this project. I simplified it (the video was making 3D graphics) but i think it looks pretty good.</p>
-      <h1 style="font-size: 25px;">Some Video</h1>
-      <!-- <p>The project is really rushed, done in about 2 hours, but i think it resulted pretty good.</p> -->
 
       <div class="photo-row">
-         <video width="900" height="600" controls>
+         <video preload="metadata" width="900" height="600" controls>
             <source src="../media/video.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
-    
-        <h1 style="font-size: 25px;">Explanation</h1>
-            <p style="font-size: 17px;">In this section I will (try to) explain the code.</p>
 
-            <p style="font-size: 17px;">This function is doing all the hard work. It takes as arguments the main object (aka. the class parent) and another object and then it calculates the attraction using <a>Newton's law of universal gravitation</a>.</p>
+        </div></section><section id="explanation" class="window content-panel"><div class="titlebar"><h2>Explanation</h2><span>[ read ]</span></div><div class="panel-body">
+            <p>In this section I will (try to) explain the code.</p>
+
+            <p>This function is doing all the hard work. It takes as arguments the main object (aka. the class parent) and another object and then it calculates the attraction using <code>Newton's law of universal gravitation</code>.</p>
             <pre>
                 <code class="language-cpp">
 
-        std::pair<float, float> Object::calculate_gravity(const Object &other)
+        std::pair&lt;float, float&gt; Object::calculate_gravity(const Object &amp;other)
         {
             const float G = 5;
-            float dx = other.x - this->x;
-            float dy = other.y - this->y;
-            float distance = get_distance(this->x, this->y, other.x, other.y);
+            float dx = other.x - this-&gt;x;
+            float dy = other.y - this-&gt;y;
+            float distance = get_distance(this-&gt;x, this-&gt;y, other.x, other.y);
 
             if (distance == 0) return {0, 0};
 
-            float force = G * (this->mass * other.mass) / (distance * distance);
-            float ax = force * (dx / distance) / this->mass; 
-            float ay = force * (dy / distance) / this->mass;
+            float force = G * (this-&gt;mass * other.mass) / (distance * distance);
+            float ax = force * (dx / distance) / this-&gt;mass;
+            float ay = force * (dy / distance) / this-&gt;mass;
 
             return {ax, ay};
         }
                 </code>
             </pre>
-        
-        <p style="font-size: 17px;">Rest of code is kinda the same as the 2D Raycaster so yeah (definetly didnt get lazy).</p>
 
-    </section>
+        <p>Rest of code is kinda the same as the 2D Raycaster so yeah (definetly didnt get lazy).</p>
+
+    </div></section><section id="source" class="window content-panel"><div class="titlebar"><h2>~/source</h2><span>[ read ]</span></div><div class="panel-body"><a class="text-link" href="https://github.com/MorariuT/2D-C-Gravity-Simulator">View the full source on GitHub ↗</a></div></section><footer class="page-footer"><a href="../index.html">← Back to home</a><a href="#main">Back to top ↑</a></footer></div>
   </main>
-
-  <script src="script.js"></script>
+  <footer class="status"><span><span class="green">●</span> projects<span class="layout-status"> &nbsp; | &nbsp; layout: split</span></span><span class="shortcut-hint">alt + 1 / 2 / 3 / 4</span><time id="clock"></time></footer>
 </body>
 </html>
